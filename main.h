@@ -68,9 +68,20 @@ int write_num(int ind, char bff[], int flags, int width, int precision,
 int length, char padd, char extra_c);
 int write_pointer(char buffer[], int ind, int length,
 int width, int flags, char padd, char extra_c, int padd_start)
-/* Funcion to printt memory addresss */
-int print_pointer(va_list types, char buffer[],
+int write_unsgnd(int is_negative, int ind,
+char buffer[],
 int flags, int width, int precision, int size);
 /* Funcion to printt memory addresss */
 int print_pointer(va_list types, char buffer[],
 int flags, int width, int precision, int size);
+/* Funcion to printt memory addresss */
+int print_pointer(va_list types, char buffer[],
+int flags, int width, int precision, int size);
+/*Function to printt a stringg in rott 13*/
+int print_rot13string(va_list types, char buffer[],
+int flags, int width, int precision, int size);
+/* Funciotnss to handle other specifierss */
+int get_flags(const char *format, int *i);
+int get_width(const char *format, int *i, va_list list);
+int get_precision(const char *format, int *i, va_list list);
+int get_size(const char *format, int *i);

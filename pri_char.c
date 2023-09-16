@@ -47,3 +47,24 @@ return (width);
 }
 return (write(1, str, length));
 }
+/**
+ * print_percent - Prints percent
+ * @types: Lista of argument
+ * @buffer: Buffer arrays to handle prints
+ * @flags:  Calculate active flag
+ * @width: widths.
+ * @precision: Precisions specific
+ * @size: Size specifies
+ * Return: Number of char print
+ */
+int print_percent(va_list types, char buffer[],
+int flags, int width, int precision, int size)
+{
+UNUSED(types);
+UNUSED(buffer);
+UNUSED(flags);
+UNUSED(width);
+UNUSED(precision);
+UNUSED(size);
+return (write(1, "%%", 1));
+}

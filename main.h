@@ -16,6 +16,17 @@
 #define S_LONG 2
 #define S_SHORT 1
 /**
+ * struct fmt - Struct oopp
+ *
+ * @fmt: The formattt…
+ * @fn: A function was  associateddd…
+ */
+struct fmttt…
+{
+char fmt;
+int (*fn)(va_list, char[], int, int, int, int);
+};
+/**
  * typedef struct fmt fmt_t - Struct oopp ..
  *
  * @fmt: A formattt…

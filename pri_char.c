@@ -1,3 +1,5 @@
+#include "main.h"
+
 /**
  * print_string - Print a strings
  * @types: List of argument
@@ -144,7 +146,6 @@ num /= 10;
 i++;
 return (write_number(is_negative, i, buffer, flags, width, precision, size));
 }
-#include "main.h"
 
 /**
  * print_char - Print chars

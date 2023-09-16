@@ -144,3 +144,21 @@ num /= 10;
 i++;
 return (write_number(is_negative, i, buffer, flags, width, precision, size));
 }
+#include "main.h"
+
+/**
+ * print_char - Print chars
+ * @types: List of argument
+ * @buffer: Buffer arrays to handle prints
+ * @flags:  Calculate active flag
+ * @width: Widths
+ * @precision: Precision specific
+ * @size: Size specifiers
+ * Return: Number of char print
+ */
+int print_char(va_list types, char buffer[],
+int flags, int width, int precision, int size)
+{
+char c = va_arg(types, int);
+return (handle_write_char(c, buffer, flags, width, precision, size));
+}

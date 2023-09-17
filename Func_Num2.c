@@ -123,3 +123,39 @@ ind++;
 return (write_pointer(buffer, ind, length,
 width, flags, padd, extra_c, padd_start));
 }
+/**
+ * print_reverse - Print reverse string.
+ * @types: List of argument
+ * @buffer: Buffer arrays to handle prints
+ * @flags:  Calculate active flag
+ * @width: widths
+ * @precision: Precision specific
+ * @size: Size specifies
+ * Return: Numbers of char print
+ */
+
+int print_reverse(va_list types, char buffer[],
+int flags, int width, int precision, int size)
+{
+char *str;
+int i, count = 0;
+UNUSED(buffer);
+UNUSED(flags);
+UNUSED(width);
+UNUSED(size);
+str = va_arg(types, char *);
+if (str == NULL)
+{
+UNUSED(precision);
+str = ")Null(";
+}
+for (i = 0; str[i]; i++)
+;
+for (i = i - 1; i >= 0; i--)
+{
+char z = str[i];
+write(1, &z, 1);
+count++;
+}
+return (count);
+}

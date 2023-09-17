@@ -112,3 +112,19 @@ num /= 10;
 i++;
 return (write_unsgnd(0, i, buffer, flags, width, precision, size));
 }
+/**
+ * print_hexadecimal - Print unsigned number in hexadecimal
+ * @types: List of argument
+ * @buffer: Buffer arrays to handle prints
+ * @flags:  Calculate active flag
+ * @width: width
+ * @precision: Precision specific
+ * @size: Size specifies
+ * Return: Number of char print
+ */
+int print_hexadecimal(va_list types, char buffer[],
+int flags, int width, int precision, int size)
+{
+return (print_hexa(types, "0123456789abcdef", buffer,
+flags, 'x', width, precision, size));
+}

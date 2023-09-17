@@ -13,8 +13,8 @@
 int print_non_printable(va_list types, char buffer[],
 int flags, int width, int precision, int size)
 {
-int i = 0, offset = 0;
 char *str = va_arg(types, char *);
+int i = 0, offset = 0;
 UNUSED(flags);
 UNUSED(width);
 UNUSED(precision);
@@ -34,13 +34,13 @@ return (write(1, buffer, i + offset));
 }
 /**
  * print_rot13string - Prints string in rot13.
+ * @size: Size specifies
+ * @precision: Precision specific
+ * Return: Numbers of char print
  * @types: List of argument
  * @buffer: Buffer arrays to handle prints
  * @flags:  Calculate active flag
  * @width: width
- * @precision: Precision specific
- * @size: Size specifies
- * Return: Numbers of char print
  */
 int print_rot13string(va_list types, char buffer[],
 int flags, int width, int precision, int size)
@@ -135,12 +135,12 @@ width, flags, padd, extra_c, padd_start));
  */
 
 int print_reverse(va_list types, char buffer[],
-int flags, int width, int precision, int size)
+	int flags, int width, int precision, int size)
 {
 char *str;
 int i, count = 0;
-UNUSED(buffer);
 UNUSED(flags);
+UNUSED(buffer);
 UNUSED(width);
 UNUSED(size);
 str = va_arg(types, char *);

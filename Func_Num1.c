@@ -36,3 +36,20 @@ buffer[i--] = '0';
 i++;
 return (write_unsgnd(0, i, buffer, flags, width, precision, size));
 }
+
+/**
+ * print_hexa_upper - Prints an unsigned number in upper
+ * @types: List of argument
+ * @buffer: Buffer arrays to handle prints
+ * @flags:  Calculate active flag
+ * @width: widths
+ * @precision: Precision specific
+ * @size: Size specifies
+ * Return: Number of char print
+ */
+int print_hexa_upper(va_list types, char buffer[],
+int flags, int width, int precision, int size)
+{
+return (print_hexa(types, "0123456789ABCDEF", buffer,
+flags, 'X', width, precision, size));
+}

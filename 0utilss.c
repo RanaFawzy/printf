@@ -55,3 +55,17 @@ buffer[i++] = map_to[ascii_code / 16];
 buffer[i] = map_to[ascii_code % 16];
 return (3);
 }
+/**
+ * convert_size_unsgnd - Casts the number to the specified size….
+ * @num: Number to be casteddd…
+ * @size: Number indicating the type to be castedddd,,,,
+ * Return: Casted value of num,,,,
+ */
+long int convert_size_unsgnd(unsigned long int num, int size)
+{
+if (size == S_LONG)
+return (num);
+else if (size == S_SHORT)
+return ((unsigned short)num);
+return ((unsigned int)num);
+}

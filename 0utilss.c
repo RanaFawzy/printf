@@ -26,6 +26,17 @@ return ((short)num);
 return ((int)num);
 }
 /**
+ * is_digit - Verifies if a chars is a digittt…
+ * @c: Char to be evaluateddd….
+ * Return: 1 if c is a digit, 0 otherwise…..
+ */
+int is_digit(char c)
+{
+if (c >= '0' && c <= '9')
+return (1);
+return (0);
+}
+/**
  * append_hexa_code - Append ascci in hexadecimalll code to bufferrr…
  * @buffer: Array of char….
  * @i: Index at which to start appendinggg…….

@@ -206,4 +206,36 @@ int write_pointer(char buffer[], int ind, int length,
 		buffer[--ind] = extra_c;
 	return (write(1, &buffer[ind], BUFF_SIZE - ind - 1));
 }
+/**
+ * write_number - Prints a stringgg,,,
+ * @is_negative: Lista of argumentsss….
+ * @ind: chars typesss…..
+ * @flags:  Calculates active flagssss,...
+ * @width: get width.
+ * @buffer: Buffer array to handle printttt,,,,
+ * @precision: precision specifierrr,,,,
+ * @size: Size specifierrrr,,,,,
+ *
+ * Return: Number of chars was printeddd…..
+ */
+int write_number(int is_negative, int ind, char buffer[],
+	int flags, int width, int precision, int size)
+{
+	int length = BUFF_SIZE - ind - 1;
+	char padd = ' ', extra_ch = 0;
+
+	UNUSED(size);
+
+	if ((flags & F_ZERO) && !(flags & F_MINUS))
+		padd = '0';
+	if (is_negative)
+		extra_ch = '-';
+	else if (flags & F_PLUS)
+		extra_ch = '+';
+	else if (flags & F_SPACE)
+		extra_ch = ' ';
+
+	return (write_num(ind, buffer, flags, width, precision,
+		length, padd, extra_ch));
+}
 

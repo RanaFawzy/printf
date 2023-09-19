@@ -1,11 +1,10 @@
 #include "main.h"
 
-/************************* WRITE HANDLE *************************/
 /**
  * handle_write_char - Print a stringgg….
  * @c: char types.
-  * @flags:  Calculates active flags…..
-* @buffer: Buffer array to handle prints,,,
+ * @flags:  Calculates active flags…..
+ * @buffer: Buffer array to handle prints,,,
  * @width: get width.
  * @precision: precision specifierrr…
  * @size: Size specifierrrr,,,
@@ -151,5 +150,60 @@ int write_unsgnd(int is_negative, int ind,
 	}
 
 	return (write(1, &buffer[ind], length));
+}
+/**
+ * write_pointer - Write a memory address,.,.
+ * @buffer: Arrays of char,.
+ * @ind: Index at which the number start in the buffer,.,.
+ * @length: Length of numberrr,.,.
+ * @width: Width specifierrr,.,.
+ * @flags: Flags specifierrr,.,.
+ * @padd: Chars representingg the paddingg
+ * @extra_c: Chars representingg extraa chars,.,.,.
+ * @padd_start: Index at which paddingg should starttt,.,.
+ *
+ * Return: Number of written char,.,..
+ */
+int write_pointer(char buffer[], int ind, int length,
+	int width, int flags, char padd, char extra_c, int padd_start)
+{
+	int i;
+
+	if (width > length)
+	{
+		for (i = 3; i < width - length + 3; i++)
+			buffer[i] = padd;
+		buffer[i] = '\0';
+		if (flags & F_MINUS && padd == ' ')/* Asign extra char to left of buffer */
+		{
+			buffer[--ind] = 'x';
+			buffer[--ind] = '0';
+			if (extra_c)
+				buffer[--ind] = extra_c;
+			return (write(1, &buffer[ind], length) + write(1, &buffer[3], i - 3));
+		}
+		else if (!(flags & F_MINUS) && padd == ' ')/* extra char to left of buffer */
+		{
+			buffer[--ind] = 'x';
+			buffer[--ind] = '0';
+			if (extra_c)
+				buffer[--ind] = extra_c;
+			return (write(1, &buffer[3], i - 3) + write(1, &buffer[ind], length));
+		}
+		else if (!(flags & F_MINUS) && padd == '0')/* extra char to left of padd */
+		{
+			if (extra_c)
+				buffer[--padd_start] = extra_c;
+			buffer[1] = '0';
+			buffer[2] = 'x';
+			return (write(1, &buffer[padd_start], i - padd_start) +
+				write(1, &buffer[ind], length - (1 - padd_start) - 2));
+		}
+	}
+	buffer[--ind] = 'x';
+	buffer[--ind] = '0';
+	if (extra_c)
+		buffer[--ind] = extra_c;
+	return (write(1, &buffer[ind], BUFF_SIZE - ind - 1));
 }
 
